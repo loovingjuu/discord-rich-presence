@@ -1,0 +1,378 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#111210">
+
+  <title>Presence Studio</title>
+
+  <link rel="stylesheet" href="style.css">
+  <script src="renderer.js" defer></script>
+</head>
+
+<body>
+  <div class="app-shell">
+
+    <aside class="sidebar">
+      <div class="brand">
+        <div class="brand-mark">P</div>
+        <div class="brand-name">
+          <strong>Presence Studio</strong>
+          <span>PERSONAL TOOL</span>
+        </div>
+      </div>
+
+      <div class="sidebar-section">
+        <span class="side-caption">WORKSPACE</span>
+
+        <div class="nav-item active">
+          <span class="nav-indicator"></span>
+          Activity
+        </div>
+      </div>
+
+      <div class="sidebar-bottom">
+        <div class="sidebar-status">
+          <span class="status-dot"></span>
+          <div>
+            <strong>Local application</strong>
+            <span>Running on this device</span>
+          </div>
+        </div>
+
+        <div class="sidebar-version">
+          VERSION 1.0.0
+        </div>
+      </div>
+    </aside>
+
+
+    <main class="main-content">
+
+      <header class="topbar">
+        <div class="breadcrumb">
+          WORKSPACE <span>/</span> ACTIVITY
+        </div>
+
+        <div class="connection-badge" id="connectionBadge">
+          <span class="badge-dot"></span>
+          <span id="connectionText">Disconnected</span>
+        </div>
+      </header>
+
+
+      <section class="page-heading">
+        <div>
+          <span class="eyebrow">DISCORD RPC CONTROLLER</span>
+          <h1>Activity</h1>
+          <p>
+            Configure and manage what appears on your Discord profile.
+          </p>
+        </div>
+      </section>
+
+
+      <div class="workspace-grid">
+
+        <section class="editor-column">
+
+          <!-- PRESETS -->
+          <section class="section">
+            <div class="section-heading">
+              <div>
+                <span class="section-index">01</span>
+                <h2>Quick presets</h2>
+              </div>
+
+              <span class="section-note">SELECT AN ACTIVITY</span>
+            </div>
+
+            <div class="preset-list">
+
+              <button class="preset-button" data-preset="coding">
+                <span class="preset-number">01</span>
+                <span class="preset-content">
+                  <strong>Coding</strong>
+                  <small>Development and building</small>
+                </span>
+                <span class="preset-arrow">↗</span>
+              </button>
+
+              <button class="preset-button" data-preset="gaming">
+                <span class="preset-number">02</span>
+                <span class="preset-content">
+                  <strong>Gaming</strong>
+                  <small>Playing and competing</small>
+                </span>
+                <span class="preset-arrow">↗</span>
+              </button>
+
+              <button class="preset-button" data-preset="studying">
+                <span class="preset-number">03</span>
+                <span class="preset-content">
+                  <strong>Studying</strong>
+                  <small>Learning something new</small>
+                </span>
+                <span class="preset-arrow">↗</span>
+              </button>
+
+              <button class="preset-button" data-preset="chilling">
+                <span class="preset-number">04</span>
+                <span class="preset-content">
+                  <strong>Chilling</strong>
+                  <small>Taking some time off</small>
+                </span>
+                <span class="preset-arrow">↗</span>
+              </button>
+
+            </div>
+          </section>
+
+
+          <!-- EDITOR -->
+          <section class="section editor-section">
+
+            <div class="section-heading">
+              <div>
+                <span class="section-index">02</span>
+                <h2>Activity details</h2>
+              </div>
+
+              <span class="section-note">CUSTOMIZE</span>
+            </div>
+
+            <div class="field">
+              <div class="field-heading">
+                <label for="details">DETAILS</label>
+                <span>01 / 02</span>
+              </div>
+
+              <input
+                id="details"
+                type="text"
+                maxlength="128"
+                placeholder="What are you doing?"
+                value="Still Writing My Life Story"
+              >
+
+              <p class="field-description">
+                The main line displayed in your activity.
+              </p>
+            </div>
+
+            <div class="field">
+              <div class="field-heading">
+                <label for="state">STATE</label>
+                <span>02 / 02</span>
+              </div>
+
+              <input
+                id="state"
+                type="text"
+                maxlength="128"
+                placeholder="Add a second line"
+                value="Software Engineering • VS Code"
+              >
+
+              <p class="field-description">
+                Additional context below your details.
+              </p>
+            </div>
+
+
+            <!-- ASSETS -->
+            <details class="assets-details">
+              <summary>
+                <span>Artwork settings</span>
+                <span class="optional-label">OPTIONAL</span>
+              </summary>
+
+              <div class="assets-content">
+
+                <div class="field">
+                  <label for="largeImageKey">LARGE IMAGE KEY</label>
+                  <input
+                    id="largeImageKey"
+                    type="text"
+                    placeholder="large_image_name"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="largeImageText">LARGE IMAGE TEXT</label>
+                  <input
+                    id="largeImageText"
+                    type="text"
+                    placeholder="Hover description"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="smallImageKey">SMALL IMAGE KEY</label>
+                  <input
+                    id="smallImageKey"
+                    type="text"
+                    placeholder="small_image_name"
+                  >
+                </div>
+
+                <div class="field">
+                  <label for="smallImageText">SMALL IMAGE TEXT</label>
+                  <input
+                    id="smallImageText"
+                    type="text"
+                    placeholder="Hover description"
+                  >
+                </div>
+
+                <p class="field-description">
+                  Image keys must match assets uploaded to your
+                  Discord Developer Portal application.
+                </p>
+
+              </div>
+            </details>
+
+
+            <!-- ACTIONS -->
+            <div class="editor-actions">
+              <button id="clearButton" class="button-secondary">
+                Clear presence
+              </button>
+
+              <button id="applyButton" class="button-primary">
+                <span>Apply activity</span>
+                <span>↗</span>
+              </button>
+            </div>
+
+            <p class="message" id="activityMessage" aria-live="polite">
+              Connect Discord to start.
+            </p>
+
+          </section>
+
+        </section>
+
+
+        <!-- RIGHT COLUMN -->
+        <aside class="side-column">
+
+          <!-- CONNECTION -->
+          <section class="side-panel">
+
+            <div class="side-panel-heading">
+              <span class="section-index">CONNECTION</span>
+              <span class="connection-symbol">↔</span>
+            </div>
+
+            <h2>Discord desktop</h2>
+
+            <p class="panel-description">
+              Connect to the local Discord application using
+              your application ID.
+            </p>
+
+            <div class="field">
+              <label for="clientId">APPLICATION ID</label>
+
+              <input
+                id="clientId"
+                type="text"
+                placeholder="Enter application ID"
+                autocomplete="off"
+              >
+            </div>
+
+            <button id="connectButton" class="connect-button">
+              Connect Discord
+            </button>
+
+            <p class="message" id="connectionMessage" aria-live="polite">
+              Discord desktop must be running.
+            </p>
+
+          </section>
+
+
+          <!-- PREVIEW -->
+          <section class="side-panel preview-panel">
+
+            <div class="side-panel-heading">
+              <span class="section-index">PREVIEW</span>
+              <span class="preview-label">LOCAL</span>
+            </div>
+
+            <h2>Activity preview</h2>
+
+            <p class="panel-description">
+              A local representation of your activity content.
+            </p>
+
+
+            <div class="discord-card">
+
+              <div class="discord-card-header">
+                <div class="discord-avatar">P</div>
+
+                <div class="discord-identity">
+                  <strong>YOUR APPLICATION</strong>
+                  <span>Registered Discord app</span>
+                </div>
+              </div>
+
+
+              <div class="discord-divider"></div>
+
+
+              <span class="activity-type">
+                ACTIVITY DETAILS
+              </span>
+
+              <strong class="preview-details" id="previewDetails">
+                Still Writing My Life Story
+              </strong>
+
+              <p class="preview-state" id="previewState">
+                Software Engineering • VS Code
+              </p>
+
+              <div class="preview-timer" id="previewTimer">
+                Not started
+              </div>
+
+            </div>
+
+            <p class="preview-disclaimer">
+              Final appearance may differ depending on Discord
+              and the application's registered assets.
+            </p>
+
+          </section>
+
+
+          <!-- INFORMATION -->
+          <div class="info-note">
+            <span class="info-mark">i</span>
+            <p>
+              Rich Presence is only active while this application
+              is connected to Discord.
+            </p>
+          </div>
+
+        </aside>
+
+      </div>
+
+
+      <footer class="footer">
+        <span>PRESENCE STUDIO</span>
+        <span>BUILT FOR PERSONAL USE</span>
+      </footer>
+
+    </main>
+  </div>
+</body>
+</html>
